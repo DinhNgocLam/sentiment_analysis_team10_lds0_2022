@@ -189,9 +189,10 @@ elif choice == 'New Prediction':
             x_new = tfidf_model.transform(lines)
             y_pred_new  = tree.predict(x_new)
             st.code('New prediction (0: Negative, 1: Positive): ' + str(y_pred_new))
-            if y_pred_new == 0:
-                st.write("It's so sad to know that you did not satisfy with the services.")
-                st.image('sad_icon.png', width = 100)
-            else:
-                st.write("We're glad that you enjoyed the services.")
-                st.image('happy_icon.jpg', width = 100)
+            if len(y_pred_new) < 2:
+                if y_pred_new == 0:
+                    st.write("It's so sad to know that you did not satisfy with the services.")
+                    st.image('sad_icon.png', width = 100)
+                else:
+                    st.write("We're glad that you enjoyed the services.")
+                    st.image('happy_icon.jpg', width = 100)
